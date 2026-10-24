@@ -6,6 +6,12 @@ website:
   page-navigation: true
   back-to-top-navigation: true
   favicon: images/favicon.ico
+  title: Summer Hill Data Book
+  description: Opensource data and analysis for Summer Hill
+  site-url: https://summerhill-databook.github.io/2026/
+  repo-url: https://github.com/summerhill-databook/2026
+  open-graph: true
+  twitter-card: true
   sidebar:
     style: "docked"
     search: true
