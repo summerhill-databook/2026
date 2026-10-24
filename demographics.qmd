@@ -27,6 +27,9 @@ load(here::here("data/clean-data/maps/sa2_maps_sh_geometries.Rda")) # SA2 Summer
 load(here::here("data/clean-data/tablebuilder/tb_age5.Rda")) # Age by SA1
 load(here::here("data/clean-data/tallyroom/nsw_la_2023.Rda")) # Election results by polling place
 load(here::here("data/clean-data/digital-atlas/da_housing_sa1.Rda")) # Polling place locations
+load(here::here("data/clean-data/tablebuilder/tb_language.Rda")) # Language by SA1
+load(here::here("data/clean-data/tablebuilder/tb_birthplace.Rda")) # Birthplace by SA1
+load(here::here("data/clean-data/tablebuilder/tb_religion.Rda")) # Birthplace by SA1
 
 # Merge the SA1 geometries to the tablebuilder data
 sa1_maps_sh_age <- sa1_maps_sh |>
@@ -36,6 +39,15 @@ sa1_maps_sh_age <- sa1_maps_sh |>
 sa1_maps_sh_housing <- sa1_maps_sh |>
   left_join(da_housing_sa1[, c("sa1_code_2021", "owned_percent", "mortgage_percent", "rent_percent")],
             by = "sa1_code_2021")
+
+sa1_maps_sh_language <- sa1_maps_sh |>
+  left_join(tb_language, by = "sa1_code_2021")
+
+sa1_maps_sh_birthplace <- sa1_maps_sh |>
+  left_join(tb_birthplace, by = "sa1_code_2021")
+
+sa1_maps_sh_religion <- sa1_maps_sh |>
+  left_join(tb_religion, by = "sa1_code_2021")
 
 # Define the colour palette
 pal <- colorNumeric(
@@ -242,11 +254,152 @@ da_housing_sa1 |>
 
 
 
-## Ancestry
+## Language and culture
+
+### Speaks a language other than English
+
+```{r}
+#| label: fig-sh-language
+#| fig-cap: "Summer Hill: Proportion that speak a language other than English"
+leaflet() |>
+  addProviderTiles(providers$Stadia.AlidadeSmooth) |> 
+    addPolygons(
+    data = sa1_maps_sh_language,
+    fillColor = ~pal(pct),
+    fillOpacity = 0.7,
+    color = "white",
+    weight = 1,
+    popup = ~paste0(
+      "<b>", sa2_name_2021, "</b><hr>",
+      "SA1: <em>", sa1_code_2021, "</em><br>",
+      "Speaks language other than English: ", paste0(round(100 * pct, digits = 0), "%"))
+    )  |>
+  addPolylines(data = sa2_maps_sh, color = '#6F83A9', weight = 2)  |>
+  addPolylines(data = sed_2022, color = "black", weight = 5) |> 
+  addMarkers(data = stations, lng = ~lon, lat = ~lat, label = ~station, icon = train_icon) 
+```
 
 
+### Born outside of Australia
 
+```{r}
+#| label: fig-sh-birthplace
+#| fig-cap: "Summer Hill: Proportion born outside of Australia"
+leaflet() |>
+  addProviderTiles(providers$Stadia.AlidadeSmooth) |> 
+    addPolygons(
+    data = sa1_maps_sh_birthplace,
+    fillColor = ~pal(pct),
+    fillOpacity = 0.7,
+    color = "white",
+    weight = 1,
+    popup = ~paste0(
+      "<b>", sa2_name_2021, "</b><hr>",
+      "SA1: <em>", sa1_code_2021, "</em><br>",
+      "Born outside of Australia: ", paste0(round(100 * pct, digits = 0), "%"))
+    )  |>
+  addPolylines(data = sa2_maps_sh, color = '#6F83A9', weight = 2)  |>
+  addPolylines(data = sed_2022, color = "black", weight = 5) |> 
+  addMarkers(data = stations, lng = ~lon, lat = ~lat, label = ~station, icon = train_icon) 
+```
 
+### Religion
+
+::: {.panel-tabset}
+
+## Secular
+
+```{r}
+#| label: fig-sh-secular
+#| fig-cap: "Summer Hill: Proportion with secular or other spiritual beliefs"
+leaflet() |>
+  addProviderTiles(providers$Stadia.AlidadeSmooth) |> 
+    addPolygons(
+    data = sa1_maps_sh_religion,
+    fillColor = ~pal(secular_pct),
+    fillOpacity = 0.7,
+    color = "white",
+    weight = 1,
+    popup = ~paste0(
+      "<b>", sa2_name_2021, "</b><hr>",
+      "SA1: <em>", sa1_code_2021, "</em><br>",
+      "Secular: ", paste0(round(100 * secular_pct, digits = 0), "%"))
+    )  |>
+  addPolylines(data = sa2_maps_sh, color = '#6F83A9', weight = 2)  |>
+  addPolylines(data = sed_2022, color = "black", weight = 5) |> 
+  addMarkers(data = stations, lng = ~lon, lat = ~lat, label = ~station, icon = train_icon) 
+```
+
+## Christian
+
+```{r}
+#| label: fig-sh-christian
+#| fig-cap: "Summer Hill: Proportion with Christian beliefs"
+leaflet() |>
+  addProviderTiles(providers$Stadia.AlidadeSmooth) |> 
+    addPolygons(
+    data = sa1_maps_sh_religion,
+    fillColor = ~pal(christian_pct),
+    fillOpacity = 0.7,
+    color = "white",
+    weight = 1,
+    popup = ~paste0(
+      "<b>", sa2_name_2021, "</b><hr>",
+      "SA1: <em>", sa1_code_2021, "</em><br>",
+      "Christian: ", paste0(round(100 * christian_pct, digits = 0), "%"))
+    )  |>
+  addPolylines(data = sa2_maps_sh, color = '#6F83A9', weight = 2)  |>
+  addPolylines(data = sed_2022, color = "black", weight = 5) |> 
+  addMarkers(data = stations, lng = ~lon, lat = ~lat, label = ~station, icon = train_icon) 
+```
+
+## Islam
+
+```{r}
+#| label: fig-sh-islam
+#| fig-cap: "Summer Hill: Proportion with Islamic beliefs"
+leaflet() |>
+  addProviderTiles(providers$Stadia.AlidadeSmooth) |> 
+    addPolygons(
+    data = sa1_maps_sh_religion,
+    fillColor = ~pal(islam_pct),
+    fillOpacity = 0.7,
+    color = "white",
+    weight = 1,
+    popup = ~paste0(
+      "<b>", sa2_name_2021, "</b><hr>",
+      "SA1: <em>", sa1_code_2021, "</em><br>",
+      "Islamic: ", paste0(round(100 * islam_pct, digits = 0), "%"))
+    )  |>
+  addPolylines(data = sa2_maps_sh, color = '#6F83A9', weight = 2)  |>
+  addPolylines(data = sed_2022, color = "black", weight = 5) |> 
+  addMarkers(data = stations, lng = ~lon, lat = ~lat, label = ~station, icon = train_icon) 
+```
+
+## Hindu
+
+```{r}
+#| label: fig-sh-hindu
+#| fig-cap: "Summer Hill: Proportion with Hindu beliefs"
+leaflet() |>
+  addProviderTiles(providers$Stadia.AlidadeSmooth) |> 
+    addPolygons(
+    data = sa1_maps_sh_religion,
+    fillColor = ~pal(hindu_pct),
+    fillOpacity = 0.7,
+    color = "white",
+    weight = 1,
+    popup = ~paste0(
+      "<b>", sa2_name_2021, "</b><hr>",
+      "SA1: <em>", sa1_code_2021, "</em><br>",
+      "Christian: ", paste0(round(100 * hindu_pct, digits = 0), "%"))
+    )  |>
+  addPolylines(data = sa2_maps_sh, color = '#6F83A9', weight = 2)  |>
+  addPolylines(data = sed_2022, color = "black", weight = 5) |> 
+  addMarkers(data = stations, lng = ~lon, lat = ~lat, label = ~station, icon = train_icon) 
+```
+
+:::
 
 
 

@@ -48,3 +48,57 @@ tb_age5 <- left_join(tb_age5m, tb_age5f, by = "sa1_code_2021") |>
 save(tb_age5, file = here::here("data/clean-data/tablebuilder/tb_age5.Rda"))
 
 
+## Language data
+
+# Read table builder data
+tb_language <- read_delim(here::here("data/raw-data/tablebuilder/summerhill_sa1_language.csv"),
+                       delim = ",", skip = 10, n_max = 61844) |>
+  filter(Total !=0) |>
+  filter(`ENGLP Proficiency in Spoken English` != "SA1 (EN)") |>
+  select(-`...11`) |>
+  rename(sa1_code_2021 = `ENGLP Proficiency in Spoken English`) |>
+  mutate(
+    count = rowSums(across(starts_with("Uses other language")), na.rm = TRUE),
+    pct = count / Total
+    )
+
+save(tb_language, file = here::here("data/clean-data/tablebuilder/tb_language.Rda"))
+
+
+## Birthplace data
+
+# Read table builder data
+tb_birthplace <- read_delim(here::here("data/raw-data/tablebuilder/summerhill_sa1_birthplace.csv"),
+                          delim = ",", skip = 10, n_max = 61844) |>
+  filter(Total !=0) |>
+  filter(`2-digit level BPLP Country of Birth of Person` != "SA1 (EN)") |>
+  select(-`...42`) |>
+  rename(sa1_code_2021 = `2-digit level BPLP Country of Birth of Person`) |>
+  mutate(
+    count = Total - `Australia (includes External Territories)`,
+    pct = count / Total
+  )
+
+save(tb_birthplace, file = here::here("data/clean-data/tablebuilder/tb_birthplace.Rda"))
+
+
+## Birthplace data
+
+# Religion data
+tb_religion <- read_delim(here::here("data/raw-data/tablebuilder/summerhill_sa1_religion.csv"),
+                            delim = ",", skip = 10, n_max = 61844) |>
+  filter(Total !=0) |>
+  filter(`1-digit level RELP Religious Affiliation` != "SA1 (EN)") |>
+  select(-`...13`) |>
+  rename(sa1_code_2021 = `1-digit level RELP Religious Affiliation`) |>
+  mutate(
+    secular_pct = `Secular Beliefs and Other Spiritual Beliefs and No Religious Affiliation` / Total,
+    christian_pct = Christianity / Total,
+    islam_pct = Islam / Total,
+    hindu_pct = Hinduism / Total
+  )
+
+save(tb_religion, file = here::here("data/clean-data/tablebuilder/tb_religion.Rda"))
+
+
+

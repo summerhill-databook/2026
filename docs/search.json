@@ -4,7 +4,7 @@
     "href": "geography.html",
     "title": "Understanding the statistical geography of Summer Hill",
     "section": "",
-    "text": "The Australian Statistical Geography Standard (ASGS)\nIsn’t that a truly boring place to start? Bear with me. The ASGS is just another why to define the boundaries of where we live, like postcode or Local Government Areas. The advantages of the AGSM:\n\nIt is hierarchical—larger areas areas are defined by grouping smaller areas. (unlike postcodes and LGAs for example)\nThe ABS provides a lot of data in this structure.\n\nWe will consider two levels in this geography standard:\n\nStatistical Area Level 2 (SA2)\nStatistical Area Level 1 (SA1)\n\n\nStatistical Area Level 2 (SA2)\nFigure 1 shows map of the Summer Hill district overlayed with the eight intersecting SA2s. Note that the SA2s represent reasonably large and connected local communities.\n\n\nTap or hover on the map to see see the SA2 name\n\n\n\n\n\n\n\n\nFigure 1: The Summer Hill district covers eight SA2s\n\n\n\n\nThe most populous SA2 is Marrickville - South (n = 14,287). Only a tiny sliver of Croydon Park - Enfield (n = 556) lies within the Summer Hill district (see Table 1).\n\n\n\n\n\n\n\n\n\n\n\n\n\nTable 1: The Summer Hill district covers eight SA2s\n\n\n\n\n\n\nStatistical Area Level 1 (SA1)\nFigure 2 shows map of the Summer Hill district overlayed with the intersecting SA1s. Note that the SA1s represent much more local areas—just a few streets or blocks.\n\n\nTap or hover on the map to see see the SA2 name and SA1 code\n\n\n\n\n\n\n\n\nFigure 2: The Summer Hill district covers eight SA2s\n\n\n\n\nIn total there are 202 SA1s across the Summer Hill district. These range in population size from 50 to almost 900 people; the average population size is about 400.\n\n\n\n\n\n\n\n\n\n\n\n\n\nTable 2: The Summer Hill district covers 202 SA1s\n\n\n\n\nNow that we understand the geography, we an use ABS census data to characterise the Summer Hill district in terms of its demographics.",
+    "text": "The Australian Statistical Geography Standard (ASGS)\nIsn’t that a truly boring place to start? Bear with me. The ASGS is just another why to define the boundaries of where we live, like postcode or Local Government Areas. The advantages of the AGSM:\n\nIt is hierarchical—larger areas areas are defined by grouping smaller areas. (unlike postcodes and LGAs for example)\nThe ABS provides a lot of data in this structure.\n\nWe will consider two levels in this geography standard:\n\nStatistical Area Level 2 (SA2)\nStatistical Area Level 1 (SA1)\n\n\nStatistical Area Level 2 (SA2)\nFigure 1 shows map of the Summer Hill district overlayed with the eight intersecting SA2s. Note that the SA2s represent reasonably large and connected local communities.\n\n\nTap or hover on the map to see see the SA2 name\n\n\n\n\n\n\n\n\nFigure 1: The Summer Hill district covers eight SA2s\n\n\n\n\nThe most populous SA2 is Marrickville - South (n = 14,287). Only a tiny sliver of Croydon Park - Enfield (n = 556) lies within the Summer Hill district (see Table 1).\n\n\n\n\n\n\n\n\n\n\n\n\n\nTable 1: The Summer Hill district covers eight SA2s\n\n\n\n\n\n\nStatistical Area Level 1 (SA1)\nFigure 2 shows map of the Summer Hill district overlayed with the intersecting SA1s. Note that the SA1s represent much more local areas—just a few streets or blocks.\n\n\nTap or hover on the map to see see the SA2 name and SA1 code\n\n\n\n\n\n\n\n\nFigure 2: The Summer Hill district covers eight SA2s\n\n\n\n\nIn total there are 202 SA1s across the Summer Hill district. These range in population size from 50 to almost 900 people; the average population size is about 400.\n\n\n\n\n\n\n\n\n\n\n\n\n\nTable 2: The Summer Hill district covers 202 SA1s\n\n\n\n\nNow that we understand the geography, we an use ABS census data to characterise the Summer Hill district in terms of its demographics.\n\n\n\n\n\n Back to top",
     "crumbs": [
       "Geography"
     ]
@@ -12,41 +12,51 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Data Sources",
+    "title": "Welcome to the Summer Hill Data Book",
     "section": "",
-    "text": "tablebuilder.abs.gov.au\n\nCensus 2021 demographics by Statistical Area 1\nCensus 2021 demographics by Statistical Area 2",
+    "text": "About\nThis site compiles maps and analysis for the New South Wales Summer Hill electoral district based on open source data.\nCheck out the following links for more information:\n\nGeography to learn about the statistical geographies used in this site.\nDemographics to learn more about the demographic make up of Summer Hill.\nData Sources to see the open source data assets used in this site.\n\n\n\n\n Back to top",
     "crumbs": [
       "Home"
     ]
   },
   {
-    "objectID": "index.html#abs-table-builder",
-    "href": "index.html#abs-table-builder",
+    "objectID": "datasources.html",
+    "href": "datasources.html",
     "title": "Data Sources",
     "section": "",
     "text": "tablebuilder.abs.gov.au\n\nCensus 2021 demographics by Statistical Area 1\nCensus 2021 demographics by Statistical Area 2",
     "crumbs": [
-      "Home"
+      "Data sources"
     ]
   },
   {
-    "objectID": "index.html#nsw-electoral-commission",
-    "href": "index.html#nsw-electoral-commission",
+    "objectID": "datasources.html#abs-table-builder",
+    "href": "datasources.html#abs-table-builder",
+    "title": "Data Sources",
+    "section": "",
+    "text": "tablebuilder.abs.gov.au\n\nCensus 2021 demographics by Statistical Area 1\nCensus 2021 demographics by Statistical Area 2",
+    "crumbs": [
+      "Data sources"
+    ]
+  },
+  {
+    "objectID": "datasources.html#nsw-electoral-commission",
+    "href": "datasources.html#nsw-electoral-commission",
     "title": "Data Sources",
     "section": "NSW Electoral Commission",
     "text": "NSW Electoral Commission\nelections.nsw.gov.au\n\nPolling places",
     "crumbs": [
-      "Home"
+      "Data sources"
     ]
   },
   {
-    "objectID": "index.html#the-tally-room",
-    "href": "index.html#the-tally-room",
+    "objectID": "datasources.html#the-tally-room",
+    "href": "datasources.html#the-tally-room",
     "title": "Data Sources",
     "section": "The Tally Room",
-    "text": "The Tally Room\nwww.tallyroom.com.au\n\n2023 State election results by pollin place",
+    "text": "The Tally Room\nwww.tallyroom.com.au\n\n2023 State election results by polling place",
     "crumbs": [
-      "Home"
+      "Data sources"
     ]
   },
   {
@@ -90,11 +100,11 @@
     ]
   },
   {
-    "objectID": "demographics.html#ancestry",
-    "href": "demographics.html#ancestry",
+    "objectID": "demographics.html#language-and-culture",
+    "href": "demographics.html#language-and-culture",
     "title": "Demographics",
-    "section": "Ancestry",
-    "text": "Ancestry",
+    "section": "Language and culture",
+    "text": "Language and culture\n\nSpeaks a language other than English\n\n\n\n\n\n\n\n\nFigure 7: Summer Hill: Proportion that speak a language other than English\n\n\n\n\n\n\nBorn outside of Australia\n\n\n\n\n\n\n\n\nFigure 8: Summer Hill: Proportion born outside of Australia\n\n\n\n\n\n\nReligion\n\nSecularChristianIslamHindu\n\n\n\n\n\n\n\n\n\n\nFigure 9: Summer Hill: Proportion with secular or other spiritual beliefs\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 10: Summer Hill: Proportion with Christian beliefs\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 11: Summer Hill: Proportion with Islamic beliefs\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 12: Summer Hill: Proportion with Hindu beliefs",
     "crumbs": [
       "Demographics"
     ]

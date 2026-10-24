@@ -1,0 +1,24 @@
+---
+title: "Data Sources"
+---
+
+## ABS Table Builder
+
+_[tablebuilder.abs.gov.au](https://tablebuilder.abs.gov.au/)_
+
+* Census 2021 demographics by Statistical Area 1
+* Census 2021 demographics by Statistical Area 2
+
+## NSW Electoral Commission
+
+_[elections.nsw.gov.au](https://elections.nsw.gov.au/)_
+
+* Polling places 
+
+## The Tally Room
+
+_[www.tallyroom.com.au](https://www.tallyroom.com.au/)_
+
+* 2023 State election results by polling place
+
+

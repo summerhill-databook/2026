@@ -1,24 +1,22 @@
 ---
-title: "Data Sources"
+title: "Welcome to the Summer Hill Data Book"
+about:
+  template: trestles     # Options: jolla, trestles, solana, marquee, broadside
+  image: "images/GreenWay Terry Rd to Davis St.jpg"
+  image-width: 30em
+  image-shape: rectangle   
+  image-alt: "Sydney's Greenway | innerwest.nsw.gov.au"
+  image-title: "Sydney's Greenway | innerwest.nsw.gov.au"
 ---
 
-## ABS Table Builder
+### About
 
-_[tablebuilder.abs.gov.au](https://tablebuilder.abs.gov.au/)_
+This site compiles maps and analysis for the New South Wales Summer Hill electoral district based on open source data. 
 
-* Census 2021 demographics by Statistical Area 1
-* Census 2021 demographics by Statistical Area 2
+Check out the following links for more information:
 
-## NSW Electoral Commission
+* [Geography](geography.qmd) to learn about the statistical geographies used in this site.
 
-_[elections.nsw.gov.au](https://elections.nsw.gov.au/)_
+* [Demographics](demographics.qmd) to learn more about the demographic make up of Summer Hill.
 
-* Polling places 
-
-## The Tally Room
-
-_[www.tallyroom.com.au](https://www.tallyroom.com.au/)_
-
-* 2023 State election results by pollin place
-
-
+* [Data Sources](datasources.qmd) to see the open source data assets used in this site. 
