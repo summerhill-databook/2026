@@ -8,7 +8,7 @@ website:
   favicon: images/favicon.ico
   title: Summer Hill Data Book
   description: Opensource data and analysis for Summer Hill
-  image: "images/GreenWay Terry Rd to Davis St.jpg"
+  image: social-preview.jpg
   site-url: https://summerhill-databook.github.io/2026/
   repo-url: https://github.com/summerhill-databook/2026
   open-graph: true
