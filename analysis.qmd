@@ -1,0 +1,145 @@
+---
+title: "Analysis"
+format: html
+execute:
+  echo: false
+  warning: false
+  message: false
+  error: false
+---
+
+```{r}
+#| label: setup
+
+# Libraries
+library(dplyr)
+library(sf)
+library(leaflet)
+library(tidyr)
+library(ggplot2)
+
+# Data and resources
+source(here::here("data/clean-data/constants.R")) # Constants
+load(here::here("data/clean-data/maps/sed_2022_geometries.Rda")) # SED Summer Hill boundary
+load(here::here("data/clean-data/maps/sa1_maps_sh_geometries.Rda")) # SA1 Summer Hill boundaries
+load(here::here("data/clean-data/tablebuilder/tb_age5.Rda")) # Age by SA1
+load(here::here("data/clean-data/tallyroom/nsw_la_2023.Rda")) # Election results by polling place
+load(here::here("data/clean-data/tallyroom/polling_places.Rda")) # Polling place locations
+
+# Merge the SA1 geometries to the tablebuilder data
+sa1_maps_sh_age <- sa1_maps_sh |>
+  left_join(tb_age5[, c("sa1_code_2021", "Total")],
+            by = "sa1_code_2021")
+
+# Define the colour palette
+pal <- colorNumeric(
+  palette = "Greys",
+  domain = sa1_maps_sh$Total
+)
+
+
+# Tidy election results
+df <- nsw_la_2023 |>
+  filter(district_name == "Summer Hill") |>
+  group_by(pp_name) |>
+  mutate(
+    pct = votes/sum(votes),
+    party_code = factor(party_code, levels = c("ALP", "LIB", "AJP", "SUS", "INF", "GRN"))
+    )
+
+df2 <- df |>
+  select(pp_name, party_code, votes) |>
+  filter(party_code %in% c("GRN", "ALP")) |>
+  pivot_wider(id_cols = pp_name, names_from = party_code, values_from = votes) |>
+  left_join(polling_places, by = "pp_name") |>
+  filter(! is.na(latitude))
+
+
+```
+
+
+## Election boundaries and polling places
+
+```{r}
+
+leaflet() |>
+  addProviderTiles(providers$Stadia.AlidadeSmooth) |> 
+    addPolygons(
+    data = sa1_maps_sh_age,
+    fillColor = ~pal(Total),
+    fillOpacity = 0.7,
+    color = "white",
+    weight = 1,
+    popup = ~paste0(
+      "<b>", sa2_name_2021, "</b><hr>",
+      "<em>", sa1_code_2021, "</em><br>",
+      "Pop: ", scales::comma(Total))
+    )  |>
+  addPolylines(data = sed_2022, color = "black", weight = 5) |> 
+  addCircleMarkers(
+    data = df2,
+    lng = ~longitude,
+    lat = ~latitude,
+    radius = ~sqrt(ALP / pi) / 2,
+    color = "black",
+    weight = 1,
+    fillColor = "#E13940",
+    fillOpacity = 0.9
+  ) |>
+  addCircleMarkers(
+    data = df2,
+    lng = ~longitude,
+    lat = ~latitude,
+    radius = ~sqrt(GRN / pi) / 2,
+    color = "black",
+    weight = 1,
+    fillColor = "#39B54A",
+    fillOpacity = 0.9,
+    popup = ~paste0(
+      "<b>", pp_name, "</b><hr>",
+      "<b>ALP: </b>", scales::comma(ALP), "<br>",
+      "<b>GRN: </b>", scales::comma(GRN)
+    )
+  ) |>
+  addLegend(
+    data = sa1_maps_sh_age,
+    "bottomright",
+    pal = pal,
+    values = ~Total,
+    title = "Total"
+  )
+
+
+```
+
+
+## 2023 State Election Results by Polling Place
+
+```{r}
+
+grn_order <- df |>
+  filter(party_code == "GRN") |>
+  arrange(votes) |>
+  pull(pp_name)
+
+ggplot() +
+  geom_col(
+    data = df |> mutate(pp_name = factor(pp_name, levels = grn_order)),
+    aes(x = votes, y = pp_name, fill = party_code)
+  ) +
+  geom_text(data = df |> filter(party_code == "GRN"),
+            aes(x = -20, y = pp_name, label = paste0(round(100 * pct), "%")),
+            size = 6/.pt, show.legend = FALSE, hjust = 1, color = "#39B54A") +
+  scale_fill_manual(values = party_cols) +
+  scale_x_continuous(NULL, labels = scales::comma) +
+  scale_y_discrete(NULL) +
+  theme_minimal() +
+  theme(
+    legend.position = 'none',
+    panel.grid.major.y = element_blank())
+
+
+```
+
+
+

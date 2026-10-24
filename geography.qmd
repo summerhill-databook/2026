@@ -1,0 +1,189 @@
+---
+title: "Understanding the statistical geography of Summer Hill"
+format: html
+execute:
+  echo: false
+  warning: false
+  message: false
+  error: false
+---
+
+```{r}
+#| label: setup
+
+# Libraries
+library(dplyr)
+library(sf)
+library(leaflet)
+library(tidyr)
+library(ggplot2)
+library(gt)
+
+# Data and resources
+source(here::here("data/clean-data/constants.R")) # Constants
+load(here::here("data/clean-data/maps/sed_2022_geometries.Rda")) # SED Summer Hill boundary
+load(here::here("data/clean-data/maps/sa1_maps_sh_geometries.Rda")) # SA1 Summer Hill boundaries
+load(here::here("data/clean-data/maps/sa2_maps_sh_geometries.Rda")) # SA1 Summer Hill boundaries
+load(here::here("data/clean-data/tablebuilder/tb_age5.Rda")) # Age by SA1
+```
+
+
+# The Australian Statistical Geography Standard (ASGS)
+
+Isn't that a truly boring place to start? Bear with me. The ASGS is just another why to define the boundaries of where we live, like postcode or Local Government Areas. The advantages of the AGSM: 
+
+* It is hierarchical---larger areas areas are defined by grouping smaller areas. (unlike postcodes and LGAs for example) 
+* The ABS provides a lot of data in this structure. 
+
+We will consider two levels in this geography standard:
+
+* Statistical Area Level 2 (SA2)
+* Statistical Area Level 1 (SA1)
+
+
+### Statistical Area Level 2 (SA2)
+
+@fig-sh-sa2 shows map of the Summer Hill district overlayed with the eight intersecting SA2s.  Note that the SA2s represent reasonably large and connected local communities. 
+
+::: {.aside}
+
+Tap or hover on the map to see see the SA2 name
+
+:::
+
+```{r}
+#| label: fig-sh-sa2
+#| fig-cap: "The Summer Hill district covers eight SA2s"
+
+leaflet() |>
+  addProviderTiles(providers$Stadia.AlidadeSmooth) |> 
+    addPolygons(
+    data = sa2_maps_sh,
+    color = "#6F83A9",
+    weight = 2,
+    popup = ~sa2_name_2021)  |>
+  addPolylines(data = sed_2022, color = "black", weight = 5) |> 
+  addMarkers(data = stations, lng = ~lon, lat = ~lat, label = ~station, icon = train_icon) 
+  
+```
+
+
+The most populous SA2 is **Marrickville - South** (n = 14,287). Only a tiny sliver of **Croydon Park - Enfield** (n = 556) lies within the Summer Hill district (see @tbl-sh-sa2).  
+
+
+```{r}
+#| label: tbl-sh-sa2
+#| tbl-cap: "The Summer Hill district covers eight SA2s"
+#| tbl-cap-location: bottom
+sa1_maps_sh |> 
+  select(sa1_code_2021, sa2_code_2021, sa2_name_2021) |> 
+  left_join(tb_age5) |> 
+  group_by(sa2_name_2021) |> 
+  summarise(pop = sum(Total)) |> 
+  arrange(-pop) |> 
+  ungroup() |> 
+  mutate(pct = 100 * pop / sum(pop)) |> 
+  st_drop_geometry() |> 
+  gt() |> 
+  cols_label(
+    sa2_name_2021 = "SA2 Name",
+    pop = "Population",
+    pct = "%"
+  ) |>
+  cols_align(align = "right", columns = c(2, 3)) |>
+  fmt_number(columns = 2, decimals = 0, use_seps = TRUE) |> 
+  fmt_number(columns = 3, decimals = 1, use_seps = TRUE) |> 
+  cols_width(1 ~ pct(50), 2 ~ pct(25), 3 ~ pct(25)) |> 
+  opt_row_striping() |>
+  opt_interactive()
+```
+
+
+### Statistical Area Level 1 (SA1)
+
+@fig-sh-sa1 shows map of the Summer Hill district overlayed with the intersecting SA1s.  Note that the SA1s represent much more local areas---just a few streets or blocks. 
+
+::: {.aside}
+
+Tap or hover on the map to see see the SA2 name and SA1 code
+
+:::
+
+```{r}
+#| label: fig-sh-sa1
+#| fig-cap: "The Summer Hill district covers eight SA2s"
+
+leaflet() |>
+  addProviderTiles(providers$Stadia.AlidadeSmooth) |> 
+    addPolygons(
+      data = sa1_maps_sh,
+      color = "#74C476",
+      fillOpacity = 0.05,
+      weight = 1,
+      popup = ~paste0(
+        "<b>", sa2_name_2021, "</b><hr>",
+        "SA1: <em>", sa1_code_2021, "</em>"
+      ))  |>
+  addPolylines(data = sa2_maps_sh, color = '#6F83A9', weight = 2)  |>
+  addPolylines(data = sed_2022, color = "black", weight = 5) |> 
+  addMarkers(data = stations, lng = ~lon, lat = ~lat, label = ~station, icon = train_icon) 
+```
+
+
+In total there are 202 SA1s across the Summer Hill district. These range in population size from 50 to almost 900 people; the average population size is about 400.  
+
+
+```{r}
+#| label: tbl-sh-sa1
+#| tbl-cap: "The Summer Hill district covers 202 SA1s"
+#| tbl-cap-location: bottom
+
+sa1_maps_sh |> 
+  select(sa1_code_2021, sa2_name_2021) |> 
+  left_join(tb_age5, by = "sa1_code_2021") |> 
+  select(sa1_code_2021, sa2_name_2021, Total) |> 
+  arrange(sa2_name_2021, -Total) |> 
+  relocate(sa2_name_2021, sa1_code_2021, Total) |> 
+  st_drop_geometry() |> 
+  gt() |> 
+  cols_label(
+    sa2_name_2021 = "SA2 Name",
+    sa1_code_2021 = "SA1 Code",
+    Total = "Population"
+  ) |>
+  cols_align(align = "right", columns = 3) |>
+  fmt_number(columns = 3, decimals = 0, use_seps = TRUE) |> 
+  cols_width(1 ~ pct(40), 2 ~ pct(35), 3 ~ pct(25)) |> 
+  opt_row_striping() |>
+  opt_interactive()
+```
+
+
+Now that we understand the geography, we an use ABS census data to characterise the Summer Hill district in terms of its [demographics](demographics.qmd). 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

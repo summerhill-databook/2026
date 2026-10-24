@@ -1,0 +1,109 @@
+[
+  {
+    "objectID": "geography.html",
+    "href": "geography.html",
+    "title": "Understanding the statistical geography of Summer Hill",
+    "section": "",
+    "text": "The Australian Statistical Geography Standard (ASGS)\nIsn’t that a truly boring place to start? Bear with me. The ASGS is just another why to define the boundaries of where we live, like postcode or Local Government Areas. The advantages of the AGSM:\n\nIt is hierarchical—larger areas areas are defined by grouping smaller areas. (unlike postcodes and LGAs for example)\nThe ABS provides a lot of data in this structure.\n\nWe will consider two levels in this geography standard:\n\nStatistical Area Level 2 (SA2)\nStatistical Area Level 1 (SA1)\n\n\nStatistical Area Level 2 (SA2)\nFigure 1 shows map of the Summer Hill district overlayed with the eight intersecting SA2s. Note that the SA2s represent reasonably large and connected local communities.\n\n\nTap or hover on the map to see see the SA2 name\n\n\n\n\n\n\n\n\nFigure 1: The Summer Hill district covers eight SA2s\n\n\n\n\nThe most populous SA2 is Marrickville - South (n = 14,287). Only a tiny sliver of Croydon Park - Enfield (n = 556) lies within the Summer Hill district (see Table 1).\n\n\n\n\n\n\n\n\n\n\n\n\n\nTable 1: The Summer Hill district covers eight SA2s\n\n\n\n\n\n\nStatistical Area Level 1 (SA1)\nFigure 2 shows map of the Summer Hill district overlayed with the intersecting SA1s. Note that the SA1s represent much more local areas—just a few streets or blocks.\n\n\nTap or hover on the map to see see the SA2 name and SA1 code\n\n\n\n\n\n\n\n\nFigure 2: The Summer Hill district covers eight SA2s\n\n\n\n\nIn total there are 202 SA1s across the Summer Hill district. These range in population size from 50 to almost 900 people; the average population size is about 400.\n\n\n\n\n\n\n\n\n\n\n\n\n\nTable 2: The Summer Hill district covers 202 SA1s\n\n\n\n\nNow that we understand the geography, we an use ABS census data to characterise the Summer Hill district in terms of its demographics.",
+    "crumbs": [
+      "Geography"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Data Sources",
+    "section": "",
+    "text": "tablebuilder.abs.gov.au\n\nCensus 2021 demographics by Statistical Area 1\nCensus 2021 demographics by Statistical Area 2",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#abs-table-builder",
+    "href": "index.html#abs-table-builder",
+    "title": "Data Sources",
+    "section": "",
+    "text": "tablebuilder.abs.gov.au\n\nCensus 2021 demographics by Statistical Area 1\nCensus 2021 demographics by Statistical Area 2",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#nsw-electoral-commission",
+    "href": "index.html#nsw-electoral-commission",
+    "title": "Data Sources",
+    "section": "NSW Electoral Commission",
+    "text": "NSW Electoral Commission\nelections.nsw.gov.au\n\nPolling places",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#the-tally-room",
+    "href": "index.html#the-tally-room",
+    "title": "Data Sources",
+    "section": "The Tally Room",
+    "text": "The Tally Room\nwww.tallyroom.com.au\n\n2023 State election results by pollin place",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "demographics.html",
+    "href": "demographics.html",
+    "title": "Demographics",
+    "section": "",
+    "text": "Figure 1: Summer Hill population density by SA1",
+    "crumbs": [
+      "Demographics"
+    ]
+  },
+  {
+    "objectID": "demographics.html#population-density",
+    "href": "demographics.html#population-density",
+    "title": "Demographics",
+    "section": "",
+    "text": "Figure 1: Summer Hill population density by SA1",
+    "crumbs": [
+      "Demographics"
+    ]
+  },
+  {
+    "objectID": "demographics.html#age-distribution",
+    "href": "demographics.html#age-distribution",
+    "title": "Demographics",
+    "section": "Age distribution",
+    "text": "Age distribution\n\nYounger voters 15 - 24 years\n\n\n\n\n\n\n\n\nFigure 2: Summer Hill Age distribution: younger voters 15 to 24 years\n\n\n\n\n\n\nBecause we are restricted to Census 2021 data, the 15 to 24 year olds are 19 - 29 years in 2026. IN 2021, there were 3,330 people aged 15-19 years and over 2,000 of these will be eligible to vote in their first state election in 2027.\n\n\nOlder voters 60+ years\n\n\n\n\n\n\n\n\nFigure 3: Summer Hill Age distribution: younger voters 15 to 24 years",
+    "crumbs": [
+      "Demographics"
+    ]
+  },
+  {
+    "objectID": "demographics.html#housing",
+    "href": "demographics.html#housing",
+    "title": "Demographics",
+    "section": "Housing",
+    "text": "Housing\n\nRenters\n\n\n\n\n\n\n\n\nFigure 4: Summer Hill housing distribution: Percentage of renters by SA1\n\n\n\n\n\n\nMortgaged\n\n\n\n\n\n\n\n\nFigure 5: Summer Hill housing distribution: Percentage of mortgaged owners by SA1\n\n\n\n\n\n\nOutright owners\n\n\n\n\n\n\n\n\nFigure 6: Summer Hill housing distribution: Percentage of outright owners by SA1\n\n\n\n\n\n\nSummary of Housing status by SA1\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTotal dwellings\nOwned\nMortaged\nRenting\n\n\n\n\nMarrickville - South\n\n\n11702163714\n74\n0%\n0%\n95%\n\n\n11702163702\n306\n5%\n19%\n78%\n\n\n11702163707\n192\n14%\n11%\n71%\n\n\n11702163730\n196\n10%\n22%\n69%\n\n\n11702163705\n189\n18%\n16%\n68%\n\n\n11702163704\n239\n18%\n14%\n65%\n\n\n11702163721\n131\n16%\n15%\n61%\n\n\n11702163706\n227\n13%\n27%\n56%\n\n\n11702163713\n222\n22%\n23%\n56%\n\n\n11702163716\n192\n22%\n18%\n56%\n\n\n11702163731\n286\n14%\n30%\n55%\n\n\n11702163732\n209\n19%\n28%\n54%\n\n\n11702163717\n135\n16%\n31%\n52%\n\n\n11702163726\n108\n28%\n20%\n52%\n\n\n11702163733\n258\n26%\n23%\n48%\n\n\n11702163711\n175\n26%\n23%\n47%\n\n\n11702163734\n262\n27%\n26%\n47%\n\n\n11702163725\n155\n26%\n25%\n46%\n\n\n11702163712\n84\n26%\n32%\n40%\n\n\n11702163708\n185\n28%\n25%\n40%\n\n\n11702163710\n128\n30%\n29%\n40%\n\n\n11702163701\n244\n25%\n37%\n39%\n\n\n11702163719\n203\n33%\n26%\n38%\n\n\n11702163727\n106\n29%\n27%\n38%\n\n\n11702163724\n70\n34%\n29%\n37%\n\n\n11702163709\n120\n48%\n22%\n32%\n\n\n11702163729\n233\n29%\n36%\n31%\n\n\n11702163720\n91\n30%\n35%\n31%\n\n\n11702163718\n160\n38%\n29%\n30%\n\n\n11702163715\n159\n32%\n35%\n26%\n\n\n11702163723\n125\n36%\n35%\n25%\n\n\n11702163722\n89\n51%\n22%\n25%\n\n\n11702163728\n123\n38%\n41%\n23%\n\n\n11702163703\n109\n38%\n39%\n22%\n\n\nAshfield - North\n\n\n12003167628\n250\n9%\n16%\n74%\n\n\n12003167620\n150\n7%\n19%\n72%\n\n\n12003167611\n212\n15%\n14%\n70%\n\n\n12003167618\n176\n20%\n15%\n68%\n\n\n12003167608\n122\n15%\n19%\n66%\n\n\n12003167607\n156\n18%\n13%\n65%\n\n\n12003167612\n202\n16%\n21%\n62%\n\n\n12003167615\n214\n19%\n22%\n59%\n\n\n12003167610\n115\n22%\n18%\n58%\n\n\n12003167614\n268\n21%\n19%\n57%\n\n\n12003167616\n98\n22%\n16%\n56%\n\n\n12003167609\n241\n17%\n24%\n55%\n\n\n12003167623\n151\n17%\n25%\n55%\n\n\n12003167617\n145\n10%\n28%\n54%\n\n\n12003167622\n158\n15%\n13%\n54%\n\n\n12003167602\n158\n28%\n18%\n53%\n\n\n12003167606\n154\n27%\n21%\n49%\n\n\n12003167601\n159\n23%\n28%\n48%\n\n\n12003167625\n140\n26%\n23%\n48%\n\n\n12003167621\n115\n19%\n23%\n47%\n\n\n12003167613\n148\n28%\n23%\n47%\n\n\n12003167605\n187\n26%\n27%\n45%\n\n\n12003167619\n144\n19%\n31%\n45%\n\n\n12003167627\n196\n33%\n23%\n43%\n\n\n12003167624\n146\n30%\n30%\n38%\n\n\n12003167604\n129\n31%\n34%\n33%\n\n\nAshfield - South\n\n\n12003167710\n189\n6%\n21%\n71%\n\n\n12003167714\n249\n8%\n23%\n65%\n\n\n12003167703\n100\n7%\n21%\n64%\n\n\n12003167715\n231\n21%\n16%\n61%\n\n\n12003167711\n224\n15%\n22%\n60%\n\n\n12003167727\n134\n13%\n29%\n60%\n\n\n12003167728\n152\n28%\n15%\n59%\n\n\n12003167721\n171\n15%\n23%\n58%\n\n\n12003167702\n127\n11%\n27%\n57%\n\n\n12003167708\n119\n19%\n20%\n57%\n\n\n12003167723\n88\n19%\n26%\n57%\n\n\n12003167712\n249\n6%\n35%\n55%\n\n\n12003167706\n139\n21%\n22%\n54%\n\n\n12003167704\n133\n26%\n20%\n53%\n\n\n12003167707\n271\n15%\n29%\n53%\n\n\n12003167725\n158\n25%\n20%\n48%\n\n\n12003167716\n193\n23%\n25%\n46%\n\n\n12003167724\n147\n27%\n24%\n41%\n\n\n12003167720\n157\n32%\n25%\n39%\n\n\n12003167726\n120\n42%\n25%\n38%\n\n\n12003167709\n77\n48%\n8%\n36%\n\n\n12003167705\n96\n28%\n34%\n35%\n\n\n12003167717\n152\n43%\n25%\n30%\n\n\n12003167722\n155\n32%\n34%\n29%\n\n\n12003167713\n215\n40%\n30%\n26%\n\n\n12003167718\n148\n37%\n29%\n24%\n\n\n12003167729\n207\n47%\n31%\n20%\n\n\n12003167701\n107\n61%\n27%\n17%\n\n\n12003167719\n284\n43%\n2%\n1%\n\n\nHaberfield - Summer Hill\n\n\n12003139512\n168\n10%\n19%\n69%\n\n\n12003139509\n259\n15%\n17%\n65%\n\n\n12003139510\n121\n17%\n20%\n64%\n\n\n12003139513\n175\n14%\n25%\n60%\n\n\n12003139514\n197\n10%\n27%\n60%\n\n\n12003139501\n157\n21%\n22%\n56%\n\n\n12003139519\n184\n18%\n17%\n56%\n\n\n12003139523\n188\n23%\n22%\n53%\n\n\n12003139502\n167\n21%\n26%\n50%\n\n\n12003139511\n210\n18%\n30%\n50%\n\n\n12003139516\n195\n17%\n35%\n46%\n\n\n12003139521\n188\n20%\n34%\n45%\n\n\n12003139520\n143\n24%\n23%\n43%\n\n\n12003139522\n156\n29%\n31%\n35%\n\n\n12003139517\n381\n24%\n41%\n34%\n\n\n12003139529\n182\n30%\n33%\n34%\n\n\n12003139531\n184\n39%\n27%\n31%\n\n\n12003139508\n130\n47%\n28%\n25%\n\n\n12003139525\n121\n47%\n30%\n23%\n\n\n12003139527\n132\n45%\n32%\n19%\n\n\n12003139530\n164\n51%\n24%\n19%\n\n\n12003139524\n144\n31%\n47%\n19%\n\n\n12003139507\n140\n54%\n22%\n18%\n\n\n12003139518\n138\n44%\n35%\n16%\n\n\n12003139528\n102\n42%\n40%\n16%\n\n\n12003139515\n139\n50%\n27%\n14%\n\n\n12003139526\n121\n52%\n29%\n14%\n\n\n12003139504\n85\n55%\n33%\n12%\n\n\n12003139532\n174\n55%\n39%\n7%\n\n\n12003139503\n163\n65%\n29%\n7%\n\n\n12003139506\n178\n56%\n34%\n6%\n\n\n12003139505\n81\n60%\n33%\n5%\n\n\nMarrickville - North\n\n\n11702163624\n31\n10%\n16%\n68%\n\n\n11702163611\n153\n16%\n17%\n63%\n\n\n11702163607\n194\n11%\n26%\n63%\n\n\n11702163625\n195\n11%\n26%\n62%\n\n\n11702163603\n154\n21%\n18%\n58%\n\n\n11702163615\n189\n17%\n31%\n54%\n\n\n11702163614\n228\n18%\n27%\n50%\n\n\n11702163618\n236\n20%\n28%\n49%\n\n\n11702163628\n143\n25%\n24%\n49%\n\n\n11702163623\n176\n17%\n34%\n49%\n\n\n11702163612\n173\n22%\n31%\n46%\n\n\n11702163602\n146\n19%\n31%\n45%\n\n\n11702163619\n150\n21%\n42%\n39%\n\n\n11702163606\n166\n30%\n29%\n39%\n\n\n11702163630\n113\n34%\n27%\n36%\n\n\n11702163629\n94\n37%\n29%\n34%\n\n\n11702163610\n150\n35%\n25%\n32%\n\n\n11702163605\n163\n37%\n32%\n31%\n\n\n11702163616\n161\n30%\n38%\n29%\n\n\n11702163613\n124\n32%\n36%\n27%\n\n\n11702163627\n182\n26%\n41%\n26%\n\n\n11702163621\n118\n46%\n35%\n24%\n\n\n11702163617\n162\n36%\n40%\n23%\n\n\nDulwich Hill - Lewisham\n\n\n12003139446\n246\n8%\n22%\n66%\n\n\n12003139437\n145\n13%\n23%\n63%\n\n\n12003139434\n258\n15%\n22%\n62%\n\n\n12003139430\n256\n15%\n19%\n61%\n\n\n12003139435\n154\n19%\n21%\n60%\n\n\n12003139406\n295\n17%\n24%\n59%\n\n\n12003139436\n208\n19%\n22%\n57%\n\n\n12003139402\n113\n16%\n26%\n57%\n\n\n12003139441\n219\n9%\n31%\n57%\n\n\n12003139419\n171\n18%\n25%\n53%\n\n\n12003139445\n85\n32%\n21%\n53%\n\n\n12003139433\n174\n24%\n27%\n53%\n\n\n12003139403\n155\n15%\n30%\n50%\n\n\n12003139427\n148\n27%\n23%\n49%\n\n\n12003139431\n183\n17%\n33%\n48%\n\n\n12003139407\n195\n28%\n19%\n48%\n\n\n12003139426\n104\n31%\n30%\n46%\n\n\n12003139404\n183\n27%\n25%\n45%\n\n\n12003139401\n335\n19%\n33%\n44%\n\n\n12003139438\n125\n30%\n26%\n44%\n\n\n12003139425\n159\n26%\n30%\n43%\n\n\n12003139409\n131\n44%\n21%\n41%\n\n\n12003139448\n170\n30%\n25%\n41%\n\n\n12003139428\n212\n27%\n32%\n39%\n\n\n12003139417\n217\n31%\n32%\n35%\n\n\n12003139405\n144\n22%\n37%\n35%\n\n\n12003139444\n85\n15%\n54%\n35%\n\n\n12003139429\n152\n39%\n28%\n34%\n\n\n12003139443\n92\n26%\n38%\n33%\n\n\n12003139414\n147\n37%\n35%\n29%\n\n\n12003139439\n94\n34%\n35%\n26%\n\n\n12003139412\n114\n41%\n34%\n25%\n\n\n12003139415\n120\n44%\n27%\n24%\n\n\n12003139413\n89\n43%\n35%\n21%\n\n\n12003139408\n116\n47%\n34%\n19%\n\n\n12003139418\n192\n45%\n31%\n19%\n\n\nCanterbury (North) - Ashbury\n\n\n12003139201\n232\n17%\n24%\n57%\n\n\n12003139231\n157\n15%\n31%\n52%\n\n\n12003139220\n179\n30%\n22%\n45%\n\n\n12003139229\n114\n34%\n26%\n34%\n\n\n12003139234\n132\n34%\n30%\n34%\n\n\n12003139222\n177\n36%\n31%\n32%\n\n\n12003139216\n197\n37%\n36%\n28%\n\n\n12003139202\n168\n38%\n33%\n25%\n\n\n12003139221\n154\n47%\n34%\n20%\n\n\n12003139207\n193\n44%\n34%\n18%\n\n\n12003139208\n94\n39%\n39%\n13%\n\n\n12003139205\n158\n53%\n35%\n12%\n\n\n12003139225\n122\n48%\n39%\n11%\n\n\n12003139218\n105\n58%\n32%\n10%\n\n\n12003139219\n171\n54%\n35%\n9%\n\n\n12003139206\n106\n63%\n27%\n8%\n\n\n12003139204\n125\n47%\n42%\n8%\n\n\n12003139226\n81\n48%\n46%\n7%\n\n\n12003139223\n96\n50%\n34%\n6%\n\n\n12003139224\n85\n59%\n36%\n5%\n\n\nCroydon Park - Enfield\n\n\n12003139337\n137\n33%\n15%\n49%\n\n\n12003139339\n82\n59%\n32%\n7%\n\n\n\n\n\n\n\n\nTable 1: Housing status by SA1",
+    "crumbs": [
+      "Demographics"
+    ]
+  },
+  {
+    "objectID": "demographics.html#ancestry",
+    "href": "demographics.html#ancestry",
+    "title": "Demographics",
+    "section": "Ancestry",
+    "text": "Ancestry",
+    "crumbs": [
+      "Demographics"
+    ]
+  },
+  {
+    "objectID": "analysis.html#state-election-results-by-polling-place",
+    "href": "analysis.html#state-election-results-by-polling-place",
+    "title": "Analysis",
+    "section": "2023 State Election Results by Polling Place",
+    "text": "2023 State Election Results by Polling Place"
+  }
+]

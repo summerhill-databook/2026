@@ -1,0 +1,27 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  sidebar:
+    style: "docked"
+    search: true
+    contents:
+
+    - href: index.qmd
+      text: Home
+
+    - text: "Geography"
+      href: geography.qmd
+
+    - text: "Demographics"
+      href: demographics.qmd
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+
+
+

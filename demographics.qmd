@@ -1,0 +1,256 @@
+---
+title: "Demographics"
+format: html
+execute:
+  echo: false
+  warning: false
+  message: false
+  error: false
+---
+
+```{r}
+#| label: setup
+
+# Libraries
+library(dplyr)
+library(sf)
+library(leaflet)
+library(tidyr)
+library(ggplot2)
+library(gt)
+
+# Data and resources
+source(here::here("data/clean-data/constants.R")) # Constants
+load(here::here("data/clean-data/maps/sed_2022_geometries.Rda")) # SED Summer Hill boundary
+load(here::here("data/clean-data/maps/sa1_maps_sh_geometries.Rda")) # SA1 Summer Hill boundaries
+load(here::here("data/clean-data/maps/sa2_maps_sh_geometries.Rda")) # SA2 Summer Hill boundaries
+load(here::here("data/clean-data/tablebuilder/tb_age5.Rda")) # Age by SA1
+load(here::here("data/clean-data/tallyroom/nsw_la_2023.Rda")) # Election results by polling place
+load(here::here("data/clean-data/digital-atlas/da_housing_sa1.Rda")) # Polling place locations
+
+# Merge the SA1 geometries to the tablebuilder data
+sa1_maps_sh_age <- sa1_maps_sh |>
+  left_join(tb_age5[, c("sa1_code_2021", "Total", "Y15to24", "Y60plus")],
+            by = "sa1_code_2021")
+
+sa1_maps_sh_housing <- sa1_maps_sh |>
+  left_join(da_housing_sa1[, c("sa1_code_2021", "owned_percent", "mortgage_percent", "rent_percent")],
+            by = "sa1_code_2021")
+
+# Define the colour palette
+pal <- colorNumeric(
+  palette = "Greens",
+  domain = sa1_maps_sh$Total
+)
+
+```
+
+
+## Population density
+
+```{r}
+#| label: fig-sh-pop
+#| fig-cap: "Summer Hill population density by SA1"
+leaflet() |>
+  addProviderTiles(providers$Stadia.AlidadeSmooth) |> 
+    addPolygons(
+    data = sa1_maps_sh_age,
+    fillColor = ~pal(Total),
+    fillOpacity = 0.7,
+    color = "white",
+    weight = 1,
+    popup = ~paste0(
+      "<b>", sa2_name_2021, "</b><hr>",
+      "<em>", sa1_code_2021, "</em><br>",
+      "Pop: ", scales::comma(Total))
+    )  |>
+  addPolylines(data = sa2_maps_sh, color = '#6F83A9', weight = 2)  |>
+  addPolylines(data = sed_2022, color = "black", weight = 5) |> 
+  addMarkers(data = stations, lng = ~lon, lat = ~lat, label = ~station, icon = train_icon) 
+```
+
+
+
+
+
+
+## Age distribution
+
+### Younger voters 15 - 24 years
+
+```{r}
+#| label: fig-sh-age15-24
+#| fig-cap: "Summer Hill Age distribution: younger voters 15 to 24 years"
+leaflet() |>
+  addProviderTiles(providers$Stadia.AlidadeSmooth) |> 
+    addPolygons(
+    data = sa1_maps_sh_age,
+    fillColor = ~pal(Y15to24),
+    fillOpacity = 0.7,
+    color = "white",
+    weight = 1,
+    popup = ~paste0(
+      "<b>", sa2_name_2021, "</b><hr>",
+      "SA1: <em>", sa1_code_2021, "</em><br>",
+      "Pop 15-24y: ", scales::comma(Y15to24))
+    )  |>
+  addPolylines(data = sa2_maps_sh, color = '#6F83A9', weight = 2)  |>
+  addPolylines(data = sed_2022, color = "black", weight = 5) |> 
+  addMarkers(data = stations, lng = ~lon, lat = ~lat, label = ~station, icon = train_icon) 
+```
+
+
+::: {.aside}
+
+Because we are restricted to Census 2021 data, the 15 to 24 year olds are 19 - 29 years in 2026. IN 2021, there were 3,330 people aged 15-19 years and over 2,000 of these will be eligible to vote in their first state election in 2027.  
+
+:::
+
+
+
+### Older voters 60+ years
+
+```{r}
+#| label: fig-sh-age60pus
+#| fig-cap: "Summer Hill Age distribution: younger voters 15 to 24 years"
+leaflet() |>
+  addProviderTiles(providers$Stadia.AlidadeSmooth) |> 
+    addPolygons(
+    data = sa1_maps_sh_age,
+    fillColor = ~pal(Y60plus),
+    fillOpacity = 0.7,
+    color = "white",
+    weight = 1,
+    popup = ~paste0(
+      "<b>", sa2_name_2021, "</b><hr>",
+      "<em>", sa1_code_2021, "</em><br>",
+      "Pop 60+y: ", scales::comma(Y60plus))
+    )  |>
+  addPolylines(data = sa2_maps_sh, color = '#6F83A9', weight = 2)  |>
+  addPolylines(data = sed_2022, color = "black", weight = 5) |> 
+  addMarkers(data = stations, lng = ~lon, lat = ~lat, label = ~station, icon = train_icon)
+```
+
+
+
+
+## Housing
+
+
+### Renters
+
+```{r}
+#| label: fig-sh-sa1_maps_sh_renters
+#| fig-cap: "Summer Hill housing distribution: Percentage of renters by SA1"
+leaflet() |>
+  addProviderTiles(providers$Stadia.AlidadeSmooth) |> 
+    addPolygons(
+    data = sa1_maps_sh_housing,
+    fillColor = ~pal(rent_percent),
+    fillOpacity = 0.7,
+    color = "white",
+    weight = 1,
+    popup = ~paste0(
+      "<b>", sa2_name_2021, "</b><hr>",
+      "<em>", sa1_code_2021, "</em><br>",
+      "Renting: ", paste0(round(100 * rent_percent, 0), "%"))
+    )  |>
+  addPolylines(data = sa2_maps_sh, color = '#6F83A9', weight = 2)  |>
+  addPolylines(data = sed_2022, color = "black", weight = 5) |> 
+  addMarkers(data = stations, lng = ~lon, lat = ~lat, label = ~station, icon = train_icon)
+```
+
+
+
+### Mortgaged
+
+```{r}
+#| label: fig-sh-sa1_maps_sh_mortgaged
+#| fig-cap: "Summer Hill housing distribution: Percentage of mortgaged owners by SA1"
+leaflet() |>
+  addProviderTiles(providers$Stadia.AlidadeSmooth) |> 
+    addPolygons(
+    data = sa1_maps_sh_housing,
+    fillColor = ~pal(mortgage_percent),
+    fillOpacity = 0.7,
+    color = "white",
+    weight = 1,
+    popup = ~paste0(
+      "<b>", sa2_name_2021, "</b><hr>",
+      "<em>", sa1_code_2021, "</em><br>",
+      "Mortgaged: ", paste0(round(100 * mortgage_percent, 0), "%"))
+    )  |>
+  addPolylines(data = sa2_maps_sh, color = '#6F83A9', weight = 2) |>
+  addPolylines(data = sed_2022, color = "black", weight = 5) |> 
+  addMarkers(data = stations, lng = ~lon, lat = ~lat, label = ~station, icon = train_icon)
+```
+
+
+### Outright owners
+
+```{r}
+#| label: fig-sh-sa1_maps_sh_owners
+#| fig-cap: "Summer Hill housing distribution: Percentage of outright owners by SA1"
+leaflet() |>
+  addProviderTiles(providers$Stadia.AlidadeSmooth) |> 
+    addPolygons(
+    data = sa1_maps_sh_housing,
+    fillColor = ~pal(owned_percent),
+    fillOpacity = 0.7,
+    color = "white",
+    weight = 1,
+    popup = ~paste0(
+      "<b>", sa2_name_2021, "</b><hr>",
+      "<em>", sa1_code_2021, "</em><br>",
+      "Outright owners: ", paste0(round(100 * owned_percent, 0), "%"))
+    )  |>
+  addPolylines(data = sa2_maps_sh, color = '#6F83A9', weight = 2)  |>
+  addPolylines(data = sed_2022, color = "black", weight = 5) |> 
+  addMarkers(data = stations, lng = ~lon, lat = ~lat, label = ~station, icon = train_icon)
+```
+
+
+### Summary of Housing status by SA1
+
+```{r}
+#| label: tbl-housing-sa1
+#| tbl-cap: "Housing status by SA1"
+#| tbl-cap-location: bottom
+#| 
+da_housing_sa1 |> 
+  select(sa1_code_2021, sa2_name_2021, `Total: Total`, ends_with('percent')) |> 
+  group_by(sa2_name_2021) |> 
+  arrange(-rent_percent) |> 
+  gt(
+    rowname_col = "sa1_code_2021",
+    groupname_col = "sa2_name_2021"
+  )  |> 
+  cols_label(
+    `Total: Total` = "Total dwellings",
+    owned_percent = "Owned",
+    mortgage_percent = "Mortaged",
+    rent_percent = "Renting",
+  ) |>  
+  cols_align(align = "right", columns = c(3, 4, 5, 6)) |> 
+  cols_align(align = "left", columns = c(1, 2)) |> 
+  fmt_percent(columns = c(4, 5, 6), decimals = 0) |> 
+  cols_width(1 ~ pct(40), 2 ~ pct(15), 3 ~ pct(15), 4 ~ pct(15)) |> 
+  opt_row_striping()
+
+```
+
+
+
+
+## Ancestry
+
+
+
+
+
+
+
+
+
+
+
