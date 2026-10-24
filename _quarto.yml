@@ -14,6 +14,7 @@ website:
   open-graph: true
   twitter-card: true
   sidebar:
+    collapse-level: 3
     style: "docked"
     search: true
     contents:
@@ -21,15 +22,12 @@ website:
     - href: index.qmd
       text: Home
       icon: house
-
     - text: "Geography"
       href: geography.qmd
       icon: geo-fill
-
     - text: "Demographics"
       href: demographics.qmd
       icon: people-fill
-
     - text: "Data sources"
       href: datasources.qmd
       icon: file-earmark-spreadsheet-fill

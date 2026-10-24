@@ -62,7 +62,7 @@ pal <- colorNumeric(
 
 ```{r}
 #| label: fig-sh-pop
-#| fig-cap: "Summer Hill population density by SA1"
+#| fig-cap: "Summer Hill population density by SA1. Source: ABS Census 2021"
 leaflet() |>
   addProviderTiles(providers$Stadia.AlidadeSmooth) |> 
     addPolygons(
@@ -92,7 +92,7 @@ leaflet() |>
 
 ```{r}
 #| label: fig-sh-age15-24
-#| fig-cap: "Summer Hill Age distribution: younger voters 15 to 24 years"
+#| fig-cap: "Summer Hill Age distribution: younger voters 15 to 24 years. Source: ABS Census 2021"
 leaflet() |>
   addProviderTiles(providers$Stadia.AlidadeSmooth) |> 
     addPolygons(
@@ -124,7 +124,7 @@ Because we are restricted to Census 2021 data, the 15 to 24 year olds are 19 - 2
 
 ```{r}
 #| label: fig-sh-age60pus
-#| fig-cap: "Summer Hill Age distribution: younger voters 15 to 24 years"
+#| fig-cap: "Summer Hill Age distribution: younger voters 15 to 24 years. Source: ABS Census 2021"
 leaflet() |>
   addProviderTiles(providers$Stadia.AlidadeSmooth) |> 
     addPolygons(
@@ -153,7 +153,7 @@ leaflet() |>
 
 ```{r}
 #| label: fig-sh-sa1_maps_sh_renters
-#| fig-cap: "Summer Hill housing distribution: Percentage of renters by SA1"
+#| fig-cap: "Summer Hill housing distribution: Percentage of renters by SA1. Source: ABS Census 2021"
 leaflet() |>
   addProviderTiles(providers$Stadia.AlidadeSmooth) |> 
     addPolygons(
@@ -178,7 +178,7 @@ leaflet() |>
 
 ```{r}
 #| label: fig-sh-sa1_maps_sh_mortgaged
-#| fig-cap: "Summer Hill housing distribution: Percentage of mortgaged owners by SA1"
+#| fig-cap: "Summer Hill housing distribution: Percentage of mortgaged owners by SA1. Source: ABS Census 2021"
 leaflet() |>
   addProviderTiles(providers$Stadia.AlidadeSmooth) |> 
     addPolygons(
@@ -202,7 +202,7 @@ leaflet() |>
 
 ```{r}
 #| label: fig-sh-sa1_maps_sh_owners
-#| fig-cap: "Summer Hill housing distribution: Percentage of outright owners by SA1"
+#| fig-cap: "Summer Hill housing distribution: Percentage of outright owners by SA1. Source: ABS Census 2021"
 leaflet() |>
   addProviderTiles(providers$Stadia.AlidadeSmooth) |> 
     addPolygons(
@@ -222,34 +222,34 @@ leaflet() |>
 ```
 
 
-### Summary of Housing status by SA1
+<!-- ### Summary of Housing status by SA1 -->
 
-```{r}
-#| label: tbl-housing-sa1
-#| tbl-cap: "Housing status by SA1"
-#| tbl-cap-location: bottom
-#| 
-da_housing_sa1 |> 
-  select(sa1_code_2021, sa2_name_2021, `Total: Total`, ends_with('percent')) |> 
-  group_by(sa2_name_2021) |> 
-  arrange(-rent_percent) |> 
-  gt(
-    rowname_col = "sa1_code_2021",
-    groupname_col = "sa2_name_2021"
-  )  |> 
-  cols_label(
-    `Total: Total` = "Total dwellings",
-    owned_percent = "Owned",
-    mortgage_percent = "Mortaged",
-    rent_percent = "Renting",
-  ) |>  
-  cols_align(align = "right", columns = c(3, 4, 5, 6)) |> 
-  cols_align(align = "left", columns = c(1, 2)) |> 
-  fmt_percent(columns = c(4, 5, 6), decimals = 0) |> 
-  cols_width(1 ~ pct(40), 2 ~ pct(15), 3 ~ pct(15), 4 ~ pct(15)) |> 
-  opt_row_striping()
+<!-- ```{r} -->
+<!-- #| label: tbl-housing-sa1 -->
+<!-- #| tbl-cap: "Housing status by SA1" -->
+<!-- #| tbl-cap-location: bottom -->
+<!-- #|  -->
+<!-- da_housing_sa1 |>  -->
+<!--   select(sa1_code_2021, sa2_name_2021, `Total: Total`, ends_with('percent')) |>  -->
+<!--   group_by(sa2_name_2021) |>  -->
+<!--   arrange(-rent_percent) |>  -->
+<!--   gt( -->
+<!--     rowname_col = "sa1_code_2021", -->
+<!--     groupname_col = "sa2_name_2021" -->
+<!--   )  |>  -->
+<!--   cols_label( -->
+<!--     `Total: Total` = "Total dwellings", -->
+<!--     owned_percent = "Owned", -->
+<!--     mortgage_percent = "Mortaged", -->
+<!--     rent_percent = "Renting", -->
+<!--   ) |>   -->
+<!--   cols_align(align = "right", columns = c(3, 4, 5, 6)) |>  -->
+<!--   cols_align(align = "left", columns = c(1, 2)) |>  -->
+<!--   fmt_percent(columns = c(4, 5, 6), decimals = 0) |>  -->
+<!--   cols_width(1 ~ pct(40), 2 ~ pct(15), 3 ~ pct(15), 4 ~ pct(15)) |>  -->
+<!--   opt_row_striping() -->
 
-```
+<!-- ``` -->
 
 
 
@@ -260,7 +260,7 @@ da_housing_sa1 |>
 
 ```{r}
 #| label: fig-sh-language
-#| fig-cap: "Summer Hill: Proportion that speak a language other than English"
+#| fig-cap: "Summer Hill: Proportion that speak a language other than English. Source: ABS Census 2021"
 leaflet() |>
   addProviderTiles(providers$Stadia.AlidadeSmooth) |> 
     addPolygons(
@@ -284,7 +284,7 @@ leaflet() |>
 
 ```{r}
 #| label: fig-sh-birthplace
-#| fig-cap: "Summer Hill: Proportion born outside of Australia"
+#| fig-cap: "Summer Hill: Proportion born outside of Australia. Source: ABS Census 2021"
 leaflet() |>
   addProviderTiles(providers$Stadia.AlidadeSmooth) |> 
     addPolygons(
@@ -311,7 +311,7 @@ leaflet() |>
 
 ```{r}
 #| label: fig-sh-secular
-#| fig-cap: "Summer Hill: Proportion with secular or other spiritual beliefs"
+#| fig-cap: "Summer Hill: Proportion with secular or other spiritual beliefs. Source: ABS Census 2021"
 leaflet() |>
   addProviderTiles(providers$Stadia.AlidadeSmooth) |> 
     addPolygons(
@@ -334,7 +334,7 @@ leaflet() |>
 
 ```{r}
 #| label: fig-sh-christian
-#| fig-cap: "Summer Hill: Proportion with Christian beliefs"
+#| fig-cap: "Summer Hill: Proportion with Christian beliefs. Source: ABS Census 2021"
 leaflet() |>
   addProviderTiles(providers$Stadia.AlidadeSmooth) |> 
     addPolygons(
@@ -357,7 +357,7 @@ leaflet() |>
 
 ```{r}
 #| label: fig-sh-islam
-#| fig-cap: "Summer Hill: Proportion with Islamic beliefs"
+#| fig-cap: "Summer Hill: Proportion with Islamic beliefs. Source: ABS Census 2021"
 leaflet() |>
   addProviderTiles(providers$Stadia.AlidadeSmooth) |> 
     addPolygons(
@@ -380,7 +380,7 @@ leaflet() |>
 
 ```{r}
 #| label: fig-sh-hindu
-#| fig-cap: "Summer Hill: Proportion with Hindu beliefs"
+#| fig-cap: "Summer Hill: Proportion with Hindu beliefs. Source: ABS Census 2021"
 leaflet() |>
   addProviderTiles(providers$Stadia.AlidadeSmooth) |> 
     addPolygons(
