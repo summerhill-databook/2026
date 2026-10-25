@@ -43,7 +43,17 @@ tb_age5 <- left_join(tb_age5m, tb_age5f, by = "sa1_code_2021") |>
       `m_60-64 years` + `m_65-69 years` +`m_70-74 years` + `m_75-79 years` +
       `m_80-84 years` + `m_85-89 years` + `m_90-94 years` + `m_95-99 years` + `m_100 years and over` +
       `f_60-64 years` + `f_65-69 years` +`f_70-74 years` + `f_75-79 years` +
-      `f_80-84 years` + `f_85-89 years` + `f_90-94 years` + `f_95-99 years` + `f_100 years and over`)
+      `f_80-84 years` + `f_85-89 years` + `f_90-94 years` + `f_95-99 years` + `f_100 years and over`,
+    m_0_19years = `m_0-4 years` + `m_5-9 years` + `m_10-14 years` + `m_15-19 years`,
+    m_20_39years = `m_20-24 years` + `m_25-29 years` + `m_30-34 years` + `m_35-39 years`,
+    m_40_59years = `m_40-44 years` + `m_45-49 years` + `m_50-54 years` + `m_55-59 years`,
+    m_60_79years = `m_60-64 years` + `m_65-69 years` + `m_70-74 years` + `m_75-79 years`,
+    m_80plusyears = `m_80-84 years` + `m_85-89 years` + `m_90-94 years` + `m_95-99 years` + `m_100 years and over`,
+    f_0_19years = `f_0-4 years` + `f_5-9 years` + `f_10-14 years` + `f_15-19 years`,
+    f_20_39years = `f_20-24 years` + `f_25-29 years` + `f_30-34 years` + `f_35-39 years`,
+    f_40_59years = `f_40-44 years` + `f_45-49 years` + `f_50-54 years` + `f_55-59 years`,
+    f_60_79years = `f_60-64 years` + `f_65-69 years` + `f_70-74 years` + `f_75-79 years`,
+    f_80plusyears = `f_80-84 years` + `f_85-89 years` + `f_90-94 years` + `f_95-99 years` + `f_100 years and over`)
 
 save(tb_age5, file = here::here("data/clean-data/tablebuilder/tb_age5.Rda"))
 

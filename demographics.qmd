@@ -18,6 +18,7 @@ library(leaflet)
 library(tidyr)
 library(ggplot2)
 library(gt)
+library(scales)
 
 # Data and resources
 source(here::here("data/clean-data/constants.R")) # Constants
@@ -87,6 +88,107 @@ leaflet() |>
 
 
 ## Age distribution
+
+
+### Age and sex profile
+
+```{r}
+#| label: fig-sh-age-sex
+#| fig-cap: "Summer Hill Age and Sex Distribution. Source: ABS Census 2021"
+tb_age5 |> 
+  left_join(sa1_maps_sh[c("sa1_code_2021", "sa2_code_2021", "sa2_name_2021")], 
+            by = "sa1_code_2021") |> 
+  summarise(
+    m_0_19years = sum(m_0_19years),
+    m_20_39years = sum(m_20_39years),
+    m_40_59years = sum(m_40_59years),
+    m_60_79years = sum(m_60_79years),
+    m_80plusyears = sum(m_80plusyears),
+    f_0_19years = sum(f_0_19years),
+    f_20_39years = sum(f_20_39years),
+    f_40_59years = sum(f_40_59years),
+    f_60_79years = sum(f_60_79years),
+    f_80plusyears = sum(f_80plusyears)
+  ) |> 
+  pivot_longer(cols = everything(), names_to = "group", values_to = 'count') |> 
+  mutate(
+    sex = ifelse(substr(group,1,1) == "m", "male", "female"),
+    group = factor(substr(group, 3, 13),
+                   levels = c('0_19years', '20_39years', '40_59years', '60_79years', '80plusyears'),
+                   labels = c('0-19 years', '20-39 years', '40-59 years', '60-79 years', '80+ years'))
+    ) |> 
+  pivot_wider(id_cols = group, values_from = count, names_from = sex) |> 
+  mutate(
+    labm = ifelse(male > 5000, paste0(scales::comma(male), " (", round(100 * male / (sum(male) + sum(female)) ),  "%)"), ''),
+    labf = ifelse(female > 5000, paste0(scales::comma(female), " (", round(100 * female / (sum(male) + sum(female)) ),  "%)"), '')) |> 
+    ggplot(aes(y = group)) +
+  geom_col(aes(x = male), fill = 'lightblue', color = 'grey20', linewidth = 0.1) +
+  geom_col(aes(x = -female), fill = 'lightpink', color = 'grey20', linewidth = 0.1) +
+  geom_text(aes(x = male, label = labm),
+            size = 8 / .pt, hjust = 1, color = 'grey40', nudge_x = -100) +
+  geom_text(aes(x = -female, label = labf),
+            size = 8 / .pt, hjust = 0, color = 'grey40', nudge_x = 100) +
+  scale_y_discrete(NULL) +
+  scale_x_continuous(NULL,
+                     limits = c(-15000, 15000), 
+                     breaks = seq(-15000, 15000, 5000), 
+                     labels = function(x) comma(abs(x)))
+
+```
+
+
+
+### Age and sex profile by SA2
+
+```{r}
+#| label: fig-sh-age-sex-sa2
+#| fig-cap: "Summer Hill Age and Sex Distribution by SA2. Source: ABS Census 2021"
+
+tb_age5 |> 
+  left_join(sa1_maps_sh[c("sa1_code_2021", "sa2_code_2021", "sa2_name_2021")], 
+            by = "sa1_code_2021") |> 
+  group_by(sa2_name_2021) |> 
+  summarise(
+    m_0_19years = sum(m_0_19years),
+    m_20_39years = sum(m_20_39years),
+    m_40_59years = sum(m_40_59years),
+    m_60_79years = sum(m_60_79years),
+    m_80plusyears = sum(m_80plusyears),
+    f_0_19years = sum(f_0_19years),
+    f_20_39years = sum(f_20_39years),
+    f_40_59years = sum(f_40_59years),
+    f_60_79years = sum(f_60_79years),
+    f_80plusyears = sum(f_80plusyears)
+  ) |> 
+  ungroup() |> 
+  pivot_longer(-sa2_name_2021, names_to = "group", values_to = 'count') |> 
+  mutate(
+    sex = ifelse(substr(group,1,1) == "m", "male", "female"),
+    group = factor(substr(group, 3, 13),
+                   levels = c('0_19years', '20_39years', '40_59years', '60_79years', '80plusyears'),
+                   labels = c('0-19 years', '20-39 years', '40-59 years', '60-79 years', '80+ years'))
+    ) |>  
+  pivot_wider(id_cols = c('sa2_name_2021', 'group'), values_from = count, names_from = sex) |> 
+  mutate(
+    labm = ifelse(male > 500, scales::comma(male), ''),
+    labf = ifelse(female > 500, scales::comma(female), '')) |> 
+    ggplot(aes(y = group)) +
+  geom_col(aes(x = male), fill = 'lightblue', color = 'grey20', linewidth = 0.1) +
+  geom_col(aes(x = -female), fill = 'lightpink', color = 'grey20', linewidth = 0.1) +
+  geom_text(aes(x = male, label = labm),
+            size = 8 / .pt, hjust = 1, color = 'grey40', nudge_x = -100) +
+  geom_text(aes(x = -female, label = labf),
+            size = 8 / .pt, hjust = 0, color = 'grey40', nudge_x = 100) +
+  facet_wrap(~sa2_name_2021, ncol = 2) +
+  scale_y_discrete(NULL) +
+  scale_x_continuous(NULL,
+                     limits = c(-3000, 3000), 
+                     breaks = seq(-3000, 3000, 1000), 
+                     labels = function(x) comma(abs(x)))
+
+```
+
+
 
 ### Younger voters 15 - 24 years
 
